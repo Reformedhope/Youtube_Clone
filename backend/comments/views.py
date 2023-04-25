@@ -5,11 +5,12 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Comment
 from .serializers import CommentSerializer
+from rest_framework import status
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def  get_all_comments(request):
-    CommentSerializer = Comment.object.all()
+    comments = Comment.object.all()
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
 
@@ -28,8 +29,8 @@ def user_comments(request,video_id):
                 return Response (serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
         elif request.method == "GET":
-            commments = Comment.objects.filter(user_id=request.user.id)
-            serializer = CommentSerializer(comments, many=True)
+            video_id = Comment.objects.filter(user_id=request.user.id)
+            serializer = CommentSerializer(video_id, many=True)
             return Response(serializer.data)
             
 
