@@ -9,9 +9,9 @@ from rest_framework import status
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def  get_all_comments(request):
-    comments = Comment.object.all()
-    serializer = CommentSerializer(comments, many=True)
+def  get_all_comments(request, video_id):
+    video_id = Comment.objects.filter(video_id__text=video_id)
+    serializer = CommentSerializer(video_id, many=True)
     return Response(serializer.data)
 
 
@@ -24,12 +24,10 @@ def user_comments(request,video_id):
         serializer = CommentSerializer(data =request.data)
         if serializer.is_valid():
             serializer.save(user=request.data)
-            if serializer.is_valid():
-                serializer.save(user = request.user)
-                return Response (serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+            return Response (serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
     elif request.method == "GET":
-        video_id = Comment.objects.filter(video_id=request.video.id)
+        video_id = Comment.objects.filter(video_id=request.user.id)
         serializer = CommentSerializer(video_id, many=True)
         return Response(serializer.data)
             
