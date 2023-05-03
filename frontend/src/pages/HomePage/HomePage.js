@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
+import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 const HomePage = () => {
@@ -10,6 +11,8 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [cars, setCars] = useState([]);
+  console.log(user)
+  console.log(token)
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -29,6 +32,9 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
+      <Link to="/addcar">Add Car!</Link>
+
+
       {cars &&
         cars.map((car) => (
           <p key={car.id}>
