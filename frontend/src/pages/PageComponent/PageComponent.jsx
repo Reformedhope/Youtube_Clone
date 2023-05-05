@@ -1,81 +1,71 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // This is how you navigate from page to page programatically.
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import useCustomForm from "../../hooks/useCustomForm";  //These come from the hooks folder.
 import axios from "axios";
 
-import useAuth from "../../hooks/useAuth";
-import useCustomForm from "../../hooks/useCustomForm";
+//Declare an object
 
+let defaultValues= {
+  "user":"",
+  "video_id":"",
+  "text":"",
+  "likes":"",
+  "dislikes":"",
+};
 
-let initialValues ={
-    make: "",
-    model:"",
-    year:"",
-}
+const commentPage= () => {
+  const[user, token] = useAuth();
+  const navigate = useNavigate();  //variable that will allow to navigate to other pages.
+  const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postComment)  //we are bringing in custom hook that will handle form data. Inital values is a roue handler function for what happens when we submit the form.
 
-// For as many inputs as you need you would put the initial values up to there and than down below make sure they are referencing them 
-
-const PageComponent = () => {
-    const[user, token]= useAuth()
-    const navigate = useNavigate()
-    const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues,postNewCar)
-
-    // Make an ansync function using the function key word dont use the arrow function, otherwise
-    // you wont be able to use it properly  up  top in the const  section because of the hoisting behavior with functions.  
-
-    async function postNewCar(){
-        try{
-            let response = await axios.post("http://127.0.0.1:8000/api/cars/",formData,{
-              headers:{
-                Authorization:'Bearer ' + token
-              }  
-            })
-            navigate("/")
-            
-        }catch(error){
-            console.log(error.message)
-
+  async function postComment(){
+    try{
+      let response = await axios.post("http://127.0.0.1:8000/api/comments/123456/",formData,{
+        headers:{
+          Authorization: 'Bearer ' + token
         }
+      })
+      navigate("/")
+    }catch(error) {
+      console.log(error.message)
+
     }
+  }
+  
+  
+  
+  return (
+             <div className="container">
+                 <h2>{user.username}</h2>
+               <form className="form" onSubmit={handleSubmit}>
+                 <label>
+                     User:{" "}
+                   <input
+                     type="text"
+                     name="User"
+                     value={formData.user}
+                     onChange={handleInputChange}
+                   />
+                 </label>
+                 <label>
+                   Text:{" "}
+                   <input
+                     type="text"
+                     name="video_id"
+                     value={formData.text}
+                     onChange={handleInputChange}
+                   />
+                 </label>
+                 <button>Add a commeent!</button>
+               </form>
+             </div>
+    
+         );
 
-    return (
-        <div className="container">
-            <h2>{user.username}</h2>
-          <form className="form" onSubmit={handleSubmit}>
-            <label>
-                make:{" "}
-              <input
-                type="text"
-                name="make"
-                value={formData.make}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              model:{" "}
-              <input
-                type="text"
-                name="model"
-                value={formData.model}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-                year:{" "}
-              <input
-                type="text"
-                name="year"
-                value={formData.year}
-                onChange={handleInputChange}
-              />
-            </label>
-            <button>Add a Car!</button>
-          </form>
-        </div>
-
-    );
 
 
 }
 
-
-export default PageComponent
+export default commentPage
