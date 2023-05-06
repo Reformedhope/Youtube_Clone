@@ -18,7 +18,7 @@ const SearchBar = (props) => {
     
     
     
-    function handleSongSubmit(event){    
+    function handleVideoSubmit(event){    
         event.preventDefault();
         props.searchInput(search)
     
@@ -30,7 +30,7 @@ const SearchBar = (props) => {
     return ( 
         <div>
             <div className='style'>
-                <form onSubmit={handleSongSubmit}>
+                <form onSubmit={handleVideoSubmit}>
                     <input type='text'
                         placeholder="Search a song" 
                         value={search}
