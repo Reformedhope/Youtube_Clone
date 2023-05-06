@@ -1,27 +1,40 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import SearchBar from "../../components/SearchBar/SearchBar";
 
-import useCustomForm from "../../hooks/useCustomForm";
+
+
+
+
 
 
 const SearchPage = (props) => {
-    const [video, setVideo] =useState([])
-    const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues)
-    const [user, token] = useAuth();
+    const [videos, setvideos]=useState ([])
+    // const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues)
+    // const [user, token] = useAuth();
     
-    async function searchedVideos(){
+    
+    async function videosearch (searchInput){
         let response = await axios.get('https://www.googleapis.com/youtube/v3/search?q=minecraft sword&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=5')
         console.log(response.data)
-        setVideo(response.data)
+        setvideos(response.data)
     
-    }
+    };
     
+
+          
+        
+                
+                
     return ( 
-     <h1>SearchPage</h1>
-
-
-
+        <div>
+            {/* <SearchBar searchInput={videosearch}/> */}
+            <Link to ="/videopage">VideoPage</Link>
+        </div>
+            
+            
+        
      );
 };
  
