@@ -11,6 +11,7 @@ import useCustomForm from '../../hooks/useCustomForm';
             function handleVideoSubmit(event){    
                 event.preventDefault();
                 props.searchInput(search)
+            }
         
         
         
@@ -30,6 +31,6 @@ import useCustomForm from '../../hooks/useCustomForm';
 
          );
     }   
-    }
+    
      
     export default SearchBar;

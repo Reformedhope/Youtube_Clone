@@ -1,30 +1,40 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// const GetVideos = () => {
+const SearchBar = (props) => {
+    const [search, setSearch]=useState([])
 
-//     const [Videos, setvideos] =useState
+    function handleVideoSubmit(event){    
+        event.preventDefault();
+        props.searchInput(search)
+    }
 
-//     useEffect(() => {   //running when a condition is met, with empty brackets only runs when page initially loads
-//         getAllVideos();
 
-//       }, []);
 
-//     async function getAllVideos(){
-//         let response = await axios.get ('https://www.googleapis.com/youtube/v3/search?q=minecraftsword&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=5');
-//          console.log(response.data);
-//          setvideos(response.data)
 
-//     return (
-//         <div>
-//             <button onClick={()=> getAllVideos()}>Get All Songs</button>
-//         </div>
 
-//      );
-// }
-// }
 
-// export default GetVideos;
+
+    
+return ( 
+    <div>
+        <div className='style'>
+            <form onSubmit={handleVideoSubmit}>
+                <input type='text'
+                    placeholder="Search a video"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)} />
+            <button type='submit'>Search Songs</button>
+        </form>
+        </div>
+    </div>
+
+
+ );
+}   
+
+
+export default SearchBar;
 
 
 

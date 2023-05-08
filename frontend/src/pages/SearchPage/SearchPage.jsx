@@ -2,27 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
-
-
-
-
-
+import LocalData from "../../LocalData";
 
 
 const SearchPage = (props) => {
-    const [videos, setvideos]=useState ([])
-    // const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues)
-    // const [user, token] = useAuth();
+    const [videos, setVideos]= useState([])
+    
     
     
     async function videosearch (searchInput){
-        let response = videos.filter('https://www.googleapis.com/youtube/v3/search?q=minecraft sword&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=6')
-        
-        
-        
+        let response = videos.filter('https://www.googleapis.com/youtube/v3/search?q=minecraftsword&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=6')
         console.log(response.data)
-        setvideos(response.data)
-    
+        setVideos(response.data)
     };
     
 
@@ -32,7 +23,8 @@ const SearchPage = (props) => {
                 
     return ( 
         <div>
-            <SearchBar searchInput={videosearch}/>
+            {console.log(LocalData)}
+            <SearchBar searchInput={videosearch}  />
             <Link to ="/videopage">VideoPage</Link>
         </div>
             
