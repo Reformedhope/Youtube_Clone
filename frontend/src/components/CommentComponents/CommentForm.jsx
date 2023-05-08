@@ -1,24 +1,31 @@
-import React from "react";
 import { useNavigate } from "react-router-dom"; // This is how you navigate from page to page programatically.
 
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";  //These come from the hooks folder.
 import axios from "axios";
+import React, { useState } from 'react';
+
 
 //Declare an object
 
-let defaultValues= {
-  "user":"",
-  "video_id":"",
-  "text":"",
-  "likes":"",
-  "dislikes":"",
-};
 
-const CommentPage= () => {
+
+
+
+
+
+
+
+const CommentForm= (props) => {
   const[user, token] = useAuth();
-  const navigate = useNavigate();  //variable that will allow to navigate to other pages.
   const [formData, handleInputChange, handleSubmit] = useCustomForm(defaultValues, postComment)  //we are bringing in custom hook that will handle form data. Inital values is a roue handler function for what happens when we submit the form.
+  const [text, setText] =useState('');
+
+  let defaultValues= {
+    "video_id": props.videoId,
+    "text":""
+  };
+
 
   async function postComment(){
     try{
@@ -27,14 +34,10 @@ const CommentPage= () => {
           Authorization: 'Bearer ' + token
         }
       })
-      navigate("/")
     }catch(error) {
       console.log(error.message)
 
-    }
-  }
-  
-  
+    }}
   
   return (
              <div className="container">
@@ -59,6 +62,6 @@ const CommentPage= () => {
 
 }
 
-export default CommentPage
+export default CommentForm;
 
 

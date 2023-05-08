@@ -32,6 +32,7 @@ function VideoPage() {
           </li>
         ))}
       </ul>
+      <CommentForm videoId={videos[0].id.videoId} />
     </div>
   );
 }

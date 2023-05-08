@@ -1,32 +1,16 @@
+import Comment from "./Comment";
+
 const CommentList = (props) => {
-    return ( 
-        <div className=' form-border1'>
-            <table>
-            <tbody>
-                {props.map((comment)=>{
-                return(
-                   
-                        <ul>
-                        <li>{comment.user}</li>
-                        <li>{comment.video_id}</li>
-                        <li>{comment.text}</li>
-                        <li>{comment.likes}</li>
-                        <li>{comment.dislikes}</li>
-                        </ul>
-                    
-                );
-                    })}
-                </tbody>
-            </table>
-        </div>
-             );
+    return ( <div>
+        {props.map((comment) => {
+            return(
+                <Comment comment={comment} />
+            )
+        })}
+    </div> );
 }
  
 export default CommentList;
-
-
-
-
 
 
 
@@ -70,3 +54,28 @@ export default CommentList;
 // }
  
 // export default CommentList;
+
+
+// const CommentList = (props) => {
+//     return ( 
+//         <div>
+//             <table>
+//             <tbody>
+//                 {props.map((comment)=>{
+//                 return (
+//                         <ul>
+//                         <li>{comment.user}</li>
+//                         <li>{comment.video_id}</li>
+//                         <li>{comment.text}</li>
+//                         <li>{comment.likes}</li>
+//                         <li>{comment.dislikes}</li>
+//                         </ul>
+//                     );
+//                     })}
+//                 </tbody>
+//             </table>
+//         </div>
+//              )}
+
+// export default CommentList;
+
