@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import RelatedVideos from "../../components/RelatedVideos/RelatedVideos";
+import CommentForm from '../../components/CommentComponents/CommentForm';
+// import CommentsList from '../../components/CommentComponents/CommentList';
 
 function VideoPage() {
   const [videos, setVideos] = useState([]);
@@ -22,7 +24,7 @@ function VideoPage() {
             <iframe
               width="700"
               height="415"
-              src={"https://www.youtube.com/embed/" + video.id.videoId}
+              rc={"https://www.youtube.com/embed/" + video.id.videoId}
               title={video.snippet.title}
             ></iframe>
             <h3>{video.snippet.title}</h3>

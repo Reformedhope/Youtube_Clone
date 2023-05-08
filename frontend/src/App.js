@@ -15,7 +15,7 @@ import PageComponent from "./pages/PageComponent/PageComponent";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-// import SearchBar from "../components/SearchBar/SearchBar";
+
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -33,7 +33,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/videopage" element={<PrivateRoute><VideoPage /></PrivateRoute>} />
-        <Route path="/pc" element={<PrivateRoute><PageComponent /></PrivateRoute>} />
+        {/* <Route path="/pc" element={<PrivateRoute><PageComponent /></PrivateRoute>} /> */}
         
         
         {/* add a fourth route for the VideoPage, can use Private if you would like  (otherwise you can use conditional rendering) */}

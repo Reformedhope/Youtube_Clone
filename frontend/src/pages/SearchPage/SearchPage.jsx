@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 
 
@@ -16,7 +16,10 @@ const SearchPage = (props) => {
     
     
     async function videosearch (searchInput){
-        let response = await axios.get('https://www.googleapis.com/youtube/v3/search?q=minecraft sword&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=5')
+        let response = videos.filter('https://www.googleapis.com/youtube/v3/search?q=minecraft sword&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=6')
+        
+        
+        
         console.log(response.data)
         setvideos(response.data)
     
@@ -29,7 +32,7 @@ const SearchPage = (props) => {
                 
     return ( 
         <div>
-            {/* <SearchBar searchInput={videosearch}/> */}
+            <SearchBar searchInput={videosearch}/>
             <Link to ="/videopage">VideoPage</Link>
         </div>
             
