@@ -7,7 +7,7 @@ function RelatedVideo() {
 
   useEffect(() => {
     async function fetchVideos() {
-        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=minecraftsword&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=6");
+        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=dsJyAEPPvBI&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&maxResults=6");
         setVideos(response.data.items);
     }
     fetchVideos();
