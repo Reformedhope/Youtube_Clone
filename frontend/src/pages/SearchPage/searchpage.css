@@ -1,0 +1,17 @@
+.flexbox-container {
+    display: flex;
+}
+
+.flexbox-item {
+    width: 5000px;
+    margin: auto;
+    padding: 1rem 25px 1rem;
+   
+}
+
+.link {
+    margin: auto;
+    padding: 5px 655px 5px;
+    background-color: rgb(220, 220, 248);
+    background: 100px;
+}

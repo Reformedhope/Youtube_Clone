@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"; // This is how you navigate from page to page programatically.
 
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";  //These come from the hooks folder.
@@ -7,13 +6,6 @@ import React, { useState } from 'react';
 
 
 //Declare an object
-
-
-
-
-
-
-
 
 
 const CommentForm= (props) => {
@@ -28,16 +20,18 @@ const CommentForm= (props) => {
 
 
   async function postComment(){
-    try{
-      let response = await axios.post("http://127.0.0.1:8000/api/comments/123456/",formData,{
-        headers:{
-          Authorization: 'Bearer ' + token
-        }
-      })
-    }catch(error) {
-      console.log(error.message)
-
-    }}
+  
+    try {
+      let response = await axios.post(`http://127.0.0.1:8000/api/comments/${props.videoId}/`, formData);
+      console.log(response.data);    
+      await props.getAllComments();
+    } catch (error) {
+      console.error(error);
+    }
+        
+      
+          
+    }
   
   return (
              <div className="container">

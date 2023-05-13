@@ -7,7 +7,7 @@ function RelatedVideo() {
 
   useEffect(() => {
     async function fetchVideos() {
-        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=dsJyAEPPvBI&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&maxResults=4");
+        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=kuFoGTMoSMo&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&maxResults=4");
         setVideos(response.data.items);
     }
     fetchVideos();
