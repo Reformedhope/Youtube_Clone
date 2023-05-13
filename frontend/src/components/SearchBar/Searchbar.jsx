@@ -6,10 +6,11 @@ import useCustomForm from '../../hooks/useCustomForm';
 
     
     const SearchBar = (props) => {
-            const [search, setSearch]=useState([])
+            const [search, setSearch]=useState('')
         
             function handleVideoSubmit(event){    
                 event.preventDefault();
+                console.log(search)
                 props.searchInput(search)
             }
         
@@ -23,7 +24,7 @@ import useCustomForm from '../../hooks/useCustomForm';
                             placeholder="Search a video"
                             value={search}
                             onChange={(event) => setSearch(event.target.value)} />
-                    <button type='submit'>Search Songs</button>
+                    <button type='submit'>Search Videos</button>
                 </form>
                 </div>
             </div>

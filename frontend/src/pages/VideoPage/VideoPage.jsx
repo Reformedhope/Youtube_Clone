@@ -24,7 +24,7 @@ function VideoPage() {
             <iframe
               width="700"
               height="415"
-              rc={"https://www.youtube.com/embed/" + video.id.videoId}
+              src={"https://www.youtube.com/embed/" + video.id.videoId}
               title={video.snippet.title}
             ></iframe>
             <h3>{video.snippet.title}</h3>
@@ -32,7 +32,8 @@ function VideoPage() {
           </li>
         ))}
       </ul>
-      <CommentForm videoId={videos[0].id.videoId} />
+      < RelatedVideos RelatedVideos = {setVideos}/>
+      {/* <CommentForm videoId={videos[0].id.videoId} /> */}
     </div>
   );
 }

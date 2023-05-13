@@ -7,7 +7,7 @@ function RelatedVideo() {
 
   useEffect(() => {
     async function fetchVideos() {
-        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=dsJyAEPPvBI&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&maxResults=6");
+        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=dsJyAEPPvBI&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&maxResults=4");
         setVideos(response.data.items);
     }
     fetchVideos();
@@ -19,9 +19,9 @@ function RelatedVideo() {
         {videos.map((video) => (
           <li key={video.id.videoId}>
             <iframe
-              width="200"
-              height="150"
-              src={"https://www.youtube.com/embed/" + video.id.videoId}
+              width="125"
+              height="100"
+              img src ={video.snippet.thumbnails.default.url}
               title={video.snippet.title}
             ></iframe>
             <h3>{video.snippet.title}</h3>
