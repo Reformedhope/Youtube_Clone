@@ -9,7 +9,7 @@ from rest_framework import status
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def  get_all_comments(request, video_id):
+def  get_all_comments(request, video_id):  # What goes into the () is the parameters that can be used in the function. 
     video_comments = Comment.objects.filter(video_id=video_id)
     serializer = CommentSerializer(video_comments, many=True)
     return Response(serializer.data)

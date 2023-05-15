@@ -9,17 +9,19 @@ import "./videopage.css";
 function VideoPage() {
   const [videos, setVideos] = useState([]);
 
+  async function fetchVideos() {
+    debugger
+    let response = await axios.get(
+      "https://www.googleapis.com/youtube/v3/search?q=Kitten&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=1"
+    );
+    
+    setVideos(response.data.items);
+  }
   useEffect(() => {
-    async function fetchVideos() {
-      let response = await axios.get(
-        "https://www.googleapis.com/youtube/v3/search?q=Kitten&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=1"
-      );
-      setVideos(response.data.items);
-    }
     fetchVideos();
   }, []);
-
-  return (
+// This say that if video has a value then it will rendar 
+  return videos && (
     <div>
       <div className="mainvideos">
         <ul>
@@ -39,9 +41,10 @@ function VideoPage() {
           ))}
         </ul>
 
-        {/* <CommentForm videoId={videos[0].id.videoId} /> */}
+        <CommentForm videoId={videos[0]?.id.videoId} />
       </div>
       <div className="relatedvideos">
+        <h2> Related Videos</h2>
         <RelatedVideos RelatedVideos={setVideos} />
       </div>
     </div>
