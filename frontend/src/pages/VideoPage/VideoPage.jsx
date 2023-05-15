@@ -21,24 +21,29 @@ function VideoPage() {
 
   return (
     <div>
-      {/* <div className="mainvideos"> */}
-      <ul>
-        {videos.map((video) => (
-          <li key={video.id.videoId}>
-            <iframe
-              width="700"
-              height="415"
-              src={"https://www.youtube.com/embed/" + video.id.videoId}
-              title={video.snippet.title}
-            ></iframe>
-            <h3>{video.snippet.title}</h3>
-            <p>{video.snippet.description.substring(0, 50) + "..."}</p>
-          </li>
-        ))}
-      </ul>
+      <div className="mainvideos">
+        <ul>
+          {videos.map((video) => (
+            <li key={video.id.videoId}>
+              <iframe
+                width="700"
+                height="415"
+                src={"https://www.youtube.com/embed/" + video.id.videoId}
+                title={video.snippet.title}
+              ></iframe>
+              <h3>{video.snippet.title}</h3>
+              <p>{video.snippet.description.substring(0, 50) + "..."}</p>
+              {/* tried .slice(0,100) to make the description less characters but that did not work... ?  adding +...  ex:  <p>{video.snippet.description.slice(0, 50) + "..."}</p> 
+              this also didnt work. */}
+            </li>
+          ))}
+        </ul>
 
-      {/* <CommentForm videoId={videos[0].id.videoId} /> */}
-      <RelatedVideos RelatedVideos={setVideos} />
+        {/* <CommentForm videoId={videos[0].id.videoId} /> */}
+      </div>
+      <div className="relatedvideos">
+        <RelatedVideos RelatedVideos={setVideos} />
+      </div>
     </div>
   );
 }

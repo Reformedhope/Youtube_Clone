@@ -9,9 +9,7 @@ const SearchPage = (props) => {
 
   async function fetchSearchVideos(searchInput) {
     let response = await axios.get(
-      "https://www.googleapis.com/youtube/v3/search?q=" +
-        searchInput +
-        "&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=6"
+      "https://www.googleapis.com/youtube/v3/search?q=" +searchInput +"&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=6"
     );
     setSearchvideos(response.data.items);
   }
