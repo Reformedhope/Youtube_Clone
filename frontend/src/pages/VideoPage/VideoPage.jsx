@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import RelatedVideos from "../../components/RelatedVideos/RelatedVideos";
 import CommentForm from "../../components/CommentComponents/CommentForm";
-// import CommentsList from '../../components/CommentComponents/CommentList';
+import CommentsList from '../../components/CommentComponents/CommentList';
 import "./videopage.css";
+import CommentList from "../../components/CommentComponents/CommentList";
 
 function VideoPage() {
   const [videos, setVideos] = useState([]);
 
   async function fetchVideos() {
-    debugger
+   
     let response = await axios.get(
       "https://www.googleapis.com/youtube/v3/search?q=Kitten&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=1"
     );
@@ -46,6 +47,9 @@ function VideoPage() {
       <div className="relatedvideos">
         <h2> Related Videos</h2>
         <RelatedVideos RelatedVideos={setVideos} />
+        <CommentList getAllComments = {Comment}/>
+
+        
       </div>
     </div>
   );

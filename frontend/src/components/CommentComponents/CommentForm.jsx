@@ -3,37 +3,40 @@ import useCustomForm from "../../hooks/useCustomForm"; //These come from the hoo
 import axios from "axios";
 import React, { useState } from "react";
 
-
-
-
-
 const CommentForm = (props) => {
   const [user, token] = useAuth();
-  const [formData, handleInputChange, handleSubmit] = useCustomForm(defaultValues,postComment); //we are bringing in custom hook that will handle form data. Inital values is a roue handler function for what happens when we submit the form.
-  const [text, setText] = useState("");
-
- function handleSubmit(event) {
-    event.preventDefault();
-    
-      let defaultValues = {
-        video_id: props.videoId,
-        text: text,
-      };
-    
-    postComment(defaultValues);
-  } 
-
-
-
-  async function postComment() {
+  const [text, setText] = useState();
+  
+  const refresh = () => window.location.reload( true);
+  async function postComment(defaultValues) {
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8000/api/comments/${props.videoId}/`,formData);
+        `http://127.0.0.1:8000/api/comments/${props.videoId}/`,
+        defaultValues,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      ); //formData
+
       console.log(response.data);
-      await props.getAllComments();
+     
     } catch (error) {
       console.error(error);
     }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    let defaultValues = {
+      video_id: props.videoId,
+      text: text,
+    };
+    console.log(defaultValues);
+
+    postComment(defaultValues);
   }
 
   return (
@@ -45,14 +48,16 @@ const CommentForm = (props) => {
           <input
             type="text"
             name="text"
-            value={formData.text}
-            onChange={handleInputChange}
+            value={text}
+            onChange={(event) => setText(event.target.value)}
           />
         </label>
-        <button>Add comment!</button>
+        <button type="submit" onClick={refresh}>Add comment!</button >
+        
       </form>
     </div>
   );
 };
 
 export default CommentForm;
+

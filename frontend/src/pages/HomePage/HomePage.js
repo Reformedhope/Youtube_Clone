@@ -37,8 +37,7 @@ const HomePage = () => {
       <Link to="/Searchpage">Search Page</Link>
 
 
-      {cars &&
-        cars.map((car) => (
+      {cars && cars.map((car) => (
           <p key={car.id}>
             {car.year} {car.model} {car.make}
           </p>
