@@ -41,14 +41,15 @@ function VideoPage() {
             </li>
           ))}
         </ul>
-
-        <CommentForm videoId={videos[0]?.id.videoId} />
       </div>
+        <CommentForm videoId={videos[0]?.id.videoId} />
+        <CommentList video_Id={videos[0]?.id.videoId} />
+
+      
       <div className="relatedvideos">
         <h2> Related Videos</h2>
         <RelatedVideos RelatedVideos={setVideos} />
-        <CommentList getAllComments = {Comment}/>
-
+      
         
       </div>
     </div>
