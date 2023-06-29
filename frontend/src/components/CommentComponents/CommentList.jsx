@@ -22,26 +22,6 @@ const CommentList = (props) => {
   }, [props.video_Id]);
     
     
-    
-//     return ( 
-//     <div>
-//         {props.comments.map((comment) => {
-//             return(
-//                 <div>
-//             <Comment comment={comment} />
-//             {/* <CommentForm postComment={getAllComments} /> */}
-//             </div>
-//             )
-//         })}
-//     </div> 
-//     );
-// }
- 
-// export default CommentList;
-
-
-
-
   return (
     <div>
     {comments.map((comment) => (
@@ -49,7 +29,7 @@ const CommentList = (props) => {
         <Comment comment={comment} />
       </div>
     ))}
-    <CommentForm postComment={setComments} />
+    {/* <CommentForm postComment={setComments} /> I do not think I need this but going to keep it here just in case */}
   </div>
 );
 }

@@ -1,5 +1,5 @@
 import useAuth from "../../hooks/useAuth";
-import useCustomForm from "../../hooks/useCustomForm"; //These come from the hooks folder.
+
 import axios from "axios";
 import React, { useState } from "react";
 
@@ -53,7 +53,6 @@ const CommentForm = (props) => {
           />
         </label>
         <button type="submit" onClick={refresh}>Add comment!</button >
-        
       </form>
     </div>
   );
