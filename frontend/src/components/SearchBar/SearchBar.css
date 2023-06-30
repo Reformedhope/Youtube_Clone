@@ -1,6 +1,23 @@
 .searchbar{
-    margin: auto;
-    padding: 5px 655px 5px;
-    background-color: rgb(220, 220, 248);
-    background: 100px;
+  background: rgb(220, 220, 250);
+  opacity: 80%;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-size:contain;
+  box-shadow: 4px 6px 5px gray;
+  color: rgb(245, 245, 245);
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+  padding: 1.0rem 1rem;
+  border-radius: 2rem;
+  border-color: rgb(163, 163, 247);
+  border-style:double;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.searchbutton{
+    background-color: rgb(227, 223, 231);
+    color: rgb(223, 207, 207);
+    font-family:Georgia, 'Times New Roman', Times, serif
 }

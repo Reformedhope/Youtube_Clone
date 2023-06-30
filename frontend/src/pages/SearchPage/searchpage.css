@@ -3,15 +3,23 @@
 }
 
 .flexbox-item {
-    width: 5000px;
+    width: 1500px;
     margin: auto;
     padding: 1rem 25px 1rem;
    
 }
 
-.link {
-    margin: auto;
-    padding: 5px 655px 5px;
-    background-color: rgb(220, 220, 248);
-    background: 100px;
-}
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .result-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 300px; 
+    box-shadow: 3px 3px 2px;
+    text-shadow: 2px 2px;
+    
+  }

@@ -2,15 +2,16 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
+
 // Pages Imports
-import HomePage from "./pages/HomePage/HomePage";
+// import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import AddCarPage from "./pages/AddCarPage/AddCarPage";
+// import AddCarPage from "./pages/AddCarPage/AddCarPage";
 
 import SearchPage from "./pages/SearchPage/SearchPage";
 import VideoPage from './pages/VideoPage/VideoPage';
-import PageComponent from "./pages/PageComponent/PageComponent";
+// import PageComponent from "./pages/PageComponent/PageComponent";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useCustomForm from "../../hooks/useCustomForm";
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
@@ -12,17 +11,19 @@ const SearchBar = (props) => {
   }
 
   return (
-    <div>
+    <div className="searchbar">
       <div className="style">
         <form onSubmit={handleVideoSubmit}>
-          <div className="searchbar">
-            <input
-              type="text"
-              placeholder="Search a video"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-            />
-            <button type="submit">Search Videos</button>
+          <div className="">
+          <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">💻</span>
+          <input type="text" class="form-control" placeholder="Search a video" value={search}
+              onChange={(event) => setSearch(event.target.value)}/> 
+              <div className="searchbutton">
+              <button type="submit">Search Videos</button>
+              </div>
+        </div>
+            
           </div>
         </form>
       </div>

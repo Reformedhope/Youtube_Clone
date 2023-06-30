@@ -1,6 +1,6 @@
 import Comment from "./Comment";
 import React, { useState, useEffect } from 'react';
-import CommentForm from "./CommentForm";
+// import CommentForm from "./CommentForm";
 import axios from "axios";
 
 const CommentList = (props) => {
