@@ -10,21 +10,26 @@ li {
 
 .navBar {
   background: rgb(149, 149, 252);;
-  box-shadow: 4px 2px 5px gray;
-  color: white;
+  background-image: url(../../Assets/kitty.jpg);
+
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 0 -980px;
+  box-shadow: 4px 6px 5px gray;
+  color: rgb(15, 7, 7);
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
 }
 
 .navBar button {
   background: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid rgb(14, 11, 11);
+  color: rgb(165, 159, 159);
   padding: 0.4rem 0.5rem;
 }
 
 .navBar button:hover {
-  background: white;
+  background: rgb(0, 0, 0);
   color: steelblue;
   cursor: pointer;
 }

@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import RelatedVideos from "../../components/RelatedVideos/RelatedVideos";
 import CommentForm from "../../components/CommentComponents/CommentForm";
-import CommentsList from '../../components/CommentComponents/CommentList';
-import "./videopage.css";
 import CommentList from "../../components/CommentComponents/CommentList";
+import "./videopage.css";
+
+
+
 
 function VideoPage() {
   const [videos, setVideos] = useState([]);
@@ -15,16 +17,19 @@ function VideoPage() {
     let response = await axios.get(
       "https://www.googleapis.com/youtube/v3/search?q=Kitten&type=video&key=AIzaSyD-g1Atdm6VXNETqjMznPTgEmPXOl3Jrfs&part=snippet&type=video&maxResults=1"
     );
-    
     setVideos(response.data.items);
   }
+  
+  
   useEffect(() => {
     fetchVideos();
   }, []);
-// This say that if video has a value then it will rendar 
+
+
+
   return videos && (
     <div>
-      <div className="mainvideos">
+      <div>
         <ul>
           {videos.map((video) => (
             <li key={video.id.videoId}>
@@ -42,15 +47,16 @@ function VideoPage() {
           ))}
         </ul>
       </div>
-        <CommentForm videoId={videos[0]?.id.videoId} />
+      
+      <div>
+      <CommentForm videoId={videos[0]?.id.videoId} />
+      </div>
         <CommentList video_Id={videos[0]?.id.videoId} />
 
       
-      <div className="relatedvideos">
+      <div>
         <h2> Related Videos</h2>
         <RelatedVideos RelatedVideos={setVideos} />
-      
-        
       </div>
     </div>
   );

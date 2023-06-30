@@ -11,7 +11,7 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             <b>Cat-tube</b>
           </Link>
         </li>
@@ -23,6 +23,13 @@ const Navbar = () => {
           )}
         </li>
       </ul>
+      
+      <ul class="nav flex-column">
+  <li class="nav-item">
+  <a href="/videopage" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"aria-current="page">Video Page</a>
+    
+  </li>
+</ul>
     </div>
   );
 };

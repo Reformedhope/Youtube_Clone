@@ -1,5 +1,4 @@
 import useAuth from "../../hooks/useAuth";
-
 import axios from "axios";
 import React, { useState } from "react";
 
@@ -8,6 +7,8 @@ const CommentForm = (props) => {
   const [text, setText] = useState();
   
   const refresh = () => window.location.reload( true);
+
+
   async function postComment(defaultValues) {
     try {
       let response = await axios.post(

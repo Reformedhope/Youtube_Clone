@@ -4,6 +4,8 @@ import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./searchpage.css";
 
+
+
 const SearchPage = (props) => {
   const [searchVideos, setSearchvideos] = useState([]);
 
@@ -13,6 +15,8 @@ const SearchPage = (props) => {
     );
     setSearchvideos(response.data.items);
   }
+
+
   useEffect(() => {
     fetchSearchVideos("");
   }, []);
@@ -23,8 +27,8 @@ const SearchPage = (props) => {
       <div className="link">
         <Link to="/videopage">VideoPage</Link>
       </div>
-      <div className="flexbox-container">
-        <div className="flexbox-item flexbox item-1">
+      <div>
+        <div>
           <ul>
             {searchVideos.map((video) => (
               <li key={video.id.videoId}>

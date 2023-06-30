@@ -8,7 +8,6 @@ const CommentList = (props) => {
 
   async function getAllComments() {
     try {
-        debugger
       const response = await axios.get(`http://127.0.0.1:8000/api/comments/get/${props.video_Id}/`);
       console.log(response.data);
       setComments(response.data);
