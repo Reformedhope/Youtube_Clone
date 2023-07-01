@@ -8,6 +8,9 @@ const Comment = (props) => {
     <div>
       <h3>{user.username}:</h3>
       <p>{props.comment.text}</p>
+      <p>Likes{props.comment.likes}</p>
+      <p>Dislikes{props.comment.dislikes}</p>
+
     
     </div>
   );

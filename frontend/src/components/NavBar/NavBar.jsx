@@ -24,9 +24,9 @@ const Navbar = () => {
         </li>
       </ul>
       
-      <ul class="nav flex-column">
-  <li class="nav-item">
-  <a href="/videopage" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"aria-current="page">Video Page</a>
+      <ul className="nav flex-column">
+  <li className="nav-item">
+  <a href="/videopage" className="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"aria-current="page">Video Page</a>
     
   </li>
 </ul>

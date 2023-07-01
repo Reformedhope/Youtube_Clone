@@ -5,7 +5,8 @@ import React, { useState } from "react";
 const CommentForm = (props) => {
   const [user, token] = useAuth();
   const [text, setText] = useState();
-  
+  const [likes, setlikes] =useState(0)
+  const [dislikes, setDislikes]= useState(0)
   const refresh = () => window.location.reload( true);
 
 
@@ -34,6 +35,8 @@ const CommentForm = (props) => {
     let defaultValues = {
       video_id: props.videoId,
       text: text,
+      likes: likes,
+      dislikes:dislikes,
     };
     console.log(defaultValues);
 
@@ -52,6 +55,8 @@ const CommentForm = (props) => {
             value={text}
             onChange={(event) => setText(event.target.value)}
           />
+          <input type= "number" value = {likes} onChange={(event) => setlikes(event.target.value)}/>
+          <input type= "number" value = {dislikes} onChange={(event) => setDislikes(event.target.value)}/>
         </label>
         <button type="submit" onClick={refresh}>Add comment!</button >
       </form>
