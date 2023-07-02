@@ -22,9 +22,10 @@ const CommentList = (props) => {
     getAllComments(); // Call the function
   }, [props.video_Id]);
 
+  const reversedComments = [...comments].reverse();
   return (
     <div>
-      {comments.map((comment) => (
+      {reversedComments.map((comment) => (
         <div key={comment.id}>
           <Comment comment={comment} />
         </div>
