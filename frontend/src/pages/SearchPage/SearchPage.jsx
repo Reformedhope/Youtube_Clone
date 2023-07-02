@@ -29,7 +29,7 @@ const SearchPage = (props) => {
         <div className="result-container">
           <ul>
             {firstRowVideos.map((video) => (
-              <li key={video.id.videoId}>
+              <li key={video.id.videoId} className="result-item">
                 <img src={video.snippet.thumbnails.default.url} alt="Youtubevideosnippet"/>
                 <a title={video.snippet.title} />
                 <h3>{video.snippet.title}</h3>
@@ -40,7 +40,7 @@ const SearchPage = (props) => {
           <div className="result-container">
           <ul className="cards">
             {secondRowVideos.map((video) => (
-              <li key={video.id.videoId}>
+              <li key={video.id.videoId} className="result-item">
                 <img src={video.snippet.thumbnails.default.url} alt="youtube snippet"/>
                 <a title={video.snippet.title} />
                 <h3>{video.snippet.title}</h3>

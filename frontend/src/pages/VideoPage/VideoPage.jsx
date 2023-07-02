@@ -52,8 +52,6 @@ function VideoPage() {
       <CommentForm videoId={videos[0]?.id.videoId} />
       </div>
         <CommentList video_Id={videos[0]?.id.videoId} />
-
-      
       <div>
         <h2> Related Videos</h2>
         <RelatedVideos RelatedVideos={setVideos} />

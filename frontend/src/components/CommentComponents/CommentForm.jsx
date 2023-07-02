@@ -1,13 +1,20 @@
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 const CommentForm = (props) => {
+  
   const [user, token] = useAuth();
   const [text, setText] = useState();
-  const [likes, setlikes] =useState(0)
+  const [likes, setLikes] =useState(0)
   const [dislikes, setDislikes]= useState(0)
-  const refresh = () => window.location.reload( true);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
+  // const refresh = () => window.location.reload( true);
 
 
   async function postComment(defaultValues) {
@@ -20,7 +27,7 @@ const CommentForm = (props) => {
             Authorization: "Bearer " + token,
           },
         }
-      ); //formData
+      ); 
 
       console.log(response.data);
      
@@ -29,23 +36,41 @@ const CommentForm = (props) => {
     }
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
+    if (!user) {
+      const promptMessage = "You must be signed in to post a comment! Please sign in.";
+      setErrorMessage(promptMessage);
+
+      const confirmed = window.confirm(promptMessage);
+      if (confirmed) {
+        navigate("/login");
+      }
+
+      return;
+    }
     let defaultValues = {
       video_id: props.videoId,
       text: text,
       likes: likes,
-      dislikes:dislikes,
+      dislikes: dislikes,
     };
-    console.log(defaultValues);
-
-    postComment(defaultValues);
+  
+    try {
+      await postComment(defaultValues);
+      // Refresh the page to fetch the updated comments
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+      postComment(defaultValues);
+    }
   }
 
   return (
-    <div className="container">
-      <h2>{user.username}</h2>
+    <div className="container"> 
+      <h2>{user ? user.username : "Guest"}</h2>
+      {/* if the user truely is a user the user name will display, if the user is not a user guest will display */}
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Comment:{" "}
@@ -55,10 +80,13 @@ const CommentForm = (props) => {
             value={text}
             onChange={(event) => setText(event.target.value)}
           />
-          <input type= "number" value = {likes} onChange={(event) => setlikes(event.target.value)}/>
-          <input type= "number" value = {dislikes} onChange={(event) => setDislikes(event.target.value)}/>
+          <input type="number" value={likes} onChange={(event) => setLikes(event.target.value)} />
+          <input type="number" value={dislikes} onChange={(event) => setDislikes(event.target.value)} />
         </label>
-        <button type="submit" onClick={refresh}>Add comment!</button >
+        {errorMessage && <p>{errorMessage}</p>}
+        <button type="submit" >
+          Add comment!
+        </button>
       </form>
     </div>
   );

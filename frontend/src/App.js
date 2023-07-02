@@ -33,7 +33,7 @@ function App() {
         <Route path="/" element={<SearchPage/>}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/videopage" element={<PrivateRoute><VideoPage /></PrivateRoute>} />
+        <Route path="/videopage" element={<VideoPage />} />
         {/* <Route path="/pc" element={<PrivateRoute><PageComponent /></PrivateRoute>} /> */}
         
         

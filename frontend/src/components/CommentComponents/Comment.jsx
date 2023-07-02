@@ -6,14 +6,17 @@ const Comment = (props) => {
 
   return (
     <div>
-      <h3>{user.username}:</h3>
-      <p>{props.comment.text}</p>
-      <p>Likes{props.comment.likes}</p>
-      <p>Dislikes{props.comment.dislikes}</p>
-
-    
+      {user && (
+        <>
+          <h3>{user.username}:</h3>
+          <p>{props.comment.text}</p>
+          <p>Likes: {props.comment.likes}</p>
+          <p>Dislikes: {props.comment.dislikes}</p>
+          <hr />
+        </>
+      )}
     </div>
   );
 };
 
-export default Comment;
+export default Comment; 
