@@ -1,0 +1,11 @@
+/* Assuming the class name of each video container is "related-video-item" */
+.related-video-item {
+    /* Add any desired styling for each video item */
+    margin-bottom: 10px; /* Optional: Add spacing between videos */
+  }
+
+
+.related-videos-container {
+    display: flex;
+    flex-direction: column;
+  }
