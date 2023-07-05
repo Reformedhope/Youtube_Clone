@@ -22,9 +22,21 @@
 // export default Comment; 
 
 
-import React from "react";
+import React, { useState } from "react";
 
 const Comment = ({ comment }) => {
+
+  const [likes, setLikes] =useState(comment.likes); // Initialize likes state with initial likes count
+  const [dislikes, setDislikes] =useState(comment.dislikes); // Initialize dislikes state with initial likes count
+  
+  const handleLike = () =>{
+    setLikes(likes + 1) //Increments likes count by 1
+  };
+
+  const handleDislikes =() =>{
+    setDislikes(dislikes + 1)
+  };
+  
   return (
     <div>
       {comment.user ? (
@@ -34,7 +46,8 @@ const Comment = ({ comment }) => {
         //those parentises.
         <p>
           {/* Displays the username of the commenter */}
-          <strong>{comment.user.username}</strong>: {comment.text}
+          <strong>{comment.user.username}</strong>: {comment.text} <br/>
+          
         </p>
       ) : (
         // {/* If the comment is from an anonymous user, display "Anonymous" */}
@@ -42,6 +55,8 @@ const Comment = ({ comment }) => {
       )}
       {/* //If the condition is true, the code between ? and : is executed.
        If the condition is false, the code after : is executed. */}
+       <button onClick={handleLike}>Like ({likes})</button>
+      <button onClick={handleDislikes}>Dislike ({dislikes})</button>
 
     </div>
   );
