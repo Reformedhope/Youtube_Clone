@@ -10,8 +10,6 @@ const Reply = (props) => {
         <>
           <h3>{user.username}:</h3>
           <p>{props.reply.text}</p>
-          <p>Likes: {props.reply.likes}</p>
-          <p>Dislikes: {props.reply.dislikes}</p>
           <hr />
         </>
       )}
