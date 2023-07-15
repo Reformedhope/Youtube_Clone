@@ -30,6 +30,18 @@ def user_video_comments(request,video_id):
         video_comments = Comment.objects.filter(video_id=video_id)
         serializer = CommentSerializer(video_comments, many=True)
         return Response(serializer.data)
+    
+    # These needs to be tested
+    elif request.method =='PUT':
+        serializer = CommentSerializer(data =request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(user=request.user, video_id=video_id)
+            return Response (serializer.data, status=status.HTTP_201_CREATED)
+        elif request.method == 'DELETE':
+             Comment.delete()
+             return Response(status=status.HTTP_204_NO_CONTENT)
+
+        
             
 
     
