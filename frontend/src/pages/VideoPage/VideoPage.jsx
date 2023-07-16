@@ -43,18 +43,19 @@ function VideoPage() {
             <h3>{videos[0]?.snippet.title}</h3>
             <p>{videos[0]?.snippet.description}</p>
           </div>
-          <div className="col">2 of 2</div>
+          
         </div>
         <div className="row">
-          <div className="col">1 of 3</div>
-          <div className="col">2 of 3</div>
-          <div className="col">3 of 3</div>
+          
+          <div className="col"><CommentForm videoId={videos[0]?.id.videoId} /></div>
+          
         </div>
+        <div className="row"><h2>Comments</h2><CommentList key={videos[0]?.id.videoId} video_Id={videos[0]?.id.videoId} /></div>
       </div>
       <div>
-        <CommentForm videoId={videos[0]?.id.videoId} />
+        
       </div>
-      <CommentList key={videos[0]?.id.videoId} video_Id={videos[0]?.id.videoId} />
+      
       <div>
         <h2>Related Videos</h2>
         <RelatedVideos

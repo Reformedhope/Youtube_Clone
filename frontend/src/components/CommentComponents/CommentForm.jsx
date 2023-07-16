@@ -73,7 +73,7 @@ const CommentForm = (props) => {
       {/* if the user truely is a user the user name will display, if the user is not a user guest will display */}
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Comment:{" "}
+          Post a comment{" "}
           <input
             type="text"
             name="text"
